@@ -61,7 +61,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       webpack: {
-        config: './config/webpack/production.js',
+        config: './config/webpack/development.js',
       },
     },
   },
