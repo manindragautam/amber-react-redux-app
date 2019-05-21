@@ -37,6 +37,6 @@ Amber::Server.configure do
   routes :static do
     # Each route is defined as follow
     # verb resource : String, controller : Symbol, action : Symbol
-    get "/*", Amber::Controller::Static, :index
+    get "/*", HomeController, :index
   end
 end
