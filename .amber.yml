@@ -29,6 +29,6 @@ watch:
       - ./spec/**/*.cr
   npm:
     build_commands:
-      - npm install --loglevel=error
+      - yarn
     run_commands:
-      - npm run watch
+      - yarn run watch
