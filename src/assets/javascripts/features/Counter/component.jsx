@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Layout from 'HOCs/Layout';
 
 const Counter = ({ value, increment, decrement, incrementAsync }) => (
   <div>
@@ -24,4 +25,4 @@ Counter.propTypes = {
   incrementAsync: PropTypes.func.isRequired,
 };
 
-export default Counter;
+export default Layout(Counter);

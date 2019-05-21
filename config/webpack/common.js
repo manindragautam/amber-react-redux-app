@@ -15,6 +15,7 @@ const config = {
     extensions: ['*', '.js', '.jsx'],
     alias: {
       amber: path.resolve(__dirname, '../../lib/amber/assets/js/amber.js'),
+      HOCs: path.resolve(__dirname, '../../src/assets/javascripts/HOCs'),
       Features: path.resolve(
         __dirname,
         '../../src/assets/javascripts/features',
