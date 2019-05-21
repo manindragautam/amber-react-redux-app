@@ -1,4 +1,4 @@
-import * as types from './types';
+import { Types } from './sauces';
 
 const initialState = {
   value: 0,
@@ -6,9 +6,9 @@ const initialState = {
 
 const countReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.INCREMENT:
+    case Types.INCREMENT:
       return { ...state, value: state.value + 1 };
-    case types.DECREMENT:
+    case Types.DECREMENT:
       return { ...state, value: state.value - 1 };
     default:
       return state;
