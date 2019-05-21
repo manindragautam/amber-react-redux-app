@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import count from '../features/Counter/reducers';
+import count from 'Features/Counter/reducers';
 
 export default combineReducers({
   count,

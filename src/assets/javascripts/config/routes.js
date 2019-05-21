@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Home from '../features/Home';
-import Counter from '../features/Counter';
+import Home from 'Features/Home';
+import Counter from 'Features/Counter';
 
 function Routes() {
   return (

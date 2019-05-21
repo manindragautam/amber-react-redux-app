@@ -15,6 +15,14 @@ const config = {
     extensions: ['*', '.js', '.jsx'],
     alias: {
       amber: path.resolve(__dirname, '../../lib/amber/assets/js/amber.js'),
+      Features: path.resolve(
+        __dirname,
+        '../../src/assets/javascripts/features',
+      ),
+      clientConfig: path.resolve(
+        __dirname,
+        '../../src/assets/javascripts/config',
+      ),
     },
   },
   module: {
