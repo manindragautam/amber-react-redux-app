@@ -12,6 +12,7 @@ const config = {
     publicPath: '/dist',
   },
   resolve: {
+    extensions: ['*', '.js', '.jsx'],
     alias: {
       amber: path.resolve(__dirname, '../../lib/amber/assets/js/amber.js'),
     },
