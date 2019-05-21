@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Home from 'Features/Home';
 import Counter from 'Features/Counter';
+import NotFound from 'Features/NotFound';
 
 function Routes() {
   return (
@@ -18,6 +19,7 @@ function Routes() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/counter" component={Counter} />
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );
