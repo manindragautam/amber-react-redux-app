@@ -5,3 +5,53 @@ $primary: #f4994b;
 .main {
   padding-top: 20px;
 }
+
+input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+/* Accordion styles */
+.tabs {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tab {
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  &-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3em;
+    margin-bottom: 0;
+    color: $primary;
+    cursor: pointer;
+    /* Icon */
+    &::after {
+      content: '\276F';
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      transition: all 0.35s;
+    }
+  }
+  &-content {
+    max-height: 0;
+    transition: all 0.35s;
+  }
+}
+
+// :checked
+input:checked {
+  + .tab-label {
+    color: #343a40;
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+  ~ .tab-content {
+    max-height: 100vh;
+    padding-left: 1.5em;
+  }
+}

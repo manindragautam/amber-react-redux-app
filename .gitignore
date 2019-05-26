@@ -1,5 +1,6 @@
 /doc/
 /lib/
+/public/dist/
 /.crystal/
 /.shards/
 /tmp/
