@@ -18,6 +18,7 @@ function Routes() {
 
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/category" component={Home} />
         <Route path="/counter" component={Counter} />
         <Route component={NotFound} />
       </Switch>

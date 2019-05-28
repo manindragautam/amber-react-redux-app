@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Layout from 'HOCs/Layout';
 import { Link } from 'react-router-dom';
 
@@ -73,6 +73,50 @@ const findUri = node => {
   return `${findUri(parentNode)}/${node.uri}`;
 };
 
+const MakeBreadCrumb = ({ category, currentPage }) => {
+  console.log(category);
+  const thisPage = category.id === currentPage.id;
+
+  if (!category.parent_category_id) {
+    return (
+      <Fragment>
+        <li className="breadcrumb-item">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="breadcrumb-item">
+          <Link to="/category">Category</Link>
+        </li>
+        <li
+          className={`breadcrumb-item ${thisPage ? 'active' : ''}`}
+          aria-current={thisPage ? 'page' : ''}
+        >
+          {thisPage ? (
+            category.name
+          ) : (
+            <Link to={findUri(category)}>{category.name}</Link>
+          )}
+        </li>
+      </Fragment>
+    );
+  }
+  const parentNode = catsData.find(x => x.id === category.parent_category_id);
+  return (
+    <Fragment>
+      <MakeBreadCrumb category={parentNode} currentPage={currentPage} />
+      <li
+        className={`breadcrumb-item ${thisPage ? 'active' : ''}`}
+        aria-current={thisPage ? 'page' : ''}
+      >
+        {thisPage ? (
+          category.name
+        ) : (
+          <Link to={findUri(category)}>{category.name}</Link>
+        )}
+      </li>
+    </Fragment>
+  );
+};
+
 const MakeChild = ({ main }) => {
   const childNodes = catsData.filter(x => x.parent_category_id === main.id);
   return (
@@ -80,7 +124,9 @@ const MakeChild = ({ main }) => {
       {childNodes.length > 0 && <input type="checkbox" id={String(main.id)} />}
 
       <label className="tab-label" htmlFor={String(main.id)}>
-        <Link to={findUri(main)}>{main.name}</Link>
+        <Link to={{ pathname: findUri(main), state: { category: main } }}>
+          {main.name}
+        </Link>
       </label>
 
       {childNodes.map(x => (
@@ -94,14 +140,25 @@ const MakeChild = ({ main }) => {
   );
 };
 
-const Home = () => (
-  <div>
-    <div className="tabs">
-      {catsData.map(
-        x => !x.parent_category_id && <MakeChild key={x.id} main={x} />,
-      )}
+const Home = ({ location }) => {
+  console.log(location);
+  return (
+    <div>
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <MakeBreadCrumb
+            category={location.state.category}
+            currentPage={location.state.category}
+          />
+        </ol>
+      </nav>
+      <div className="tabs">
+        {catsData.map(
+          x => !x.parent_category_id && <MakeChild key={x.id} main={x} />,
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Layout(Home);
